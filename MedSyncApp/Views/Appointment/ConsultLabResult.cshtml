@@ -1,0 +1,48 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.LabResult;
+@model List<LabResultViewModel>;
+@{
+    ViewData["Title"] = "Consultar Resultados";
+}
+
+
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-12 d-flex justify-content-end">
+            <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-success bg-gradient">Cerrar Resultados</a>
+            
+                <a asp-controller="Appointment" asp-action="CompleteAppointment" asp-route-appointmentId="@Model.FirstOrDefault()?.AppointmentId" class="btn btn-success bg-gradient ms-2">Completar Cita</a> 
+            
+        </div>
+    </div>
+    <div class="row mb-3">
+        <h1 class="custom-dark-color display-4 fw-bold">Consultar Resultados</h1>
+    </div>
+    <div class="row mb-3">
+        <table class="table text-success table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-success">PRUEBA DE LABORATORIO</th>
+                    <th scope="col" class="text-success">ESTADO</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (LabResultViewModel labResult in Model)
+                {
+                    <tr class="text-dark">
+                        <td scope="row">@labResult.LabTestName</td>
+                        @if (labResult.Status.ToString() == "Pending")
+                        {
+                            <td scope="row">Pendiente</td>
+                        }
+                        else
+                        {
+                            <td scope="row">Completada</td>
+                        }
+                        <!--<td scope="row">@labResult.Status</td>-->
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

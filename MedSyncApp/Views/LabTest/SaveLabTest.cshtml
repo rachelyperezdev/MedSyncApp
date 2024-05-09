@@ -1,0 +1,42 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.LabTest;
+@model SaveLabTestViewModel;
+@{
+    bool editMode = Model.Id != 0 ? true : false;
+
+    if (editMode)
+    {
+        ViewData["Title"] = "Editar Prueba de Laboratorio";
+    }
+    else
+    {
+        ViewData["Title"] = "Crear Prueba de Laboratorio";
+    }
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card bg-left bg-gradient border-0 rounded-3">
+                <div class="card-header bg-success bg-gradient text-light p-2">
+                    <h4 class="m-2 display-6">@(editMode ? $"Edita la prueba de laboratorio {Model.Name}" : "Crea una nueva prueba de laboratorio")</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-controller="LabTest" asp-action="@(editMode ? "Edit" : "Create")">
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label custom-dark-color fw-bold">Nombre</label>
+                            <input type="text" asp-for="Name" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="d-flex justify-content-end">
+                            <a asp-controller="LabTest" asp-action="Index" class="btn btn-outline-success m-2">Volver atrás</a>
+                            <button type="submit" class="btn btn-success m-2">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

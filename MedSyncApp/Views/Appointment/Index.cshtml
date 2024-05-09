@@ -1,0 +1,68 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.Appointment;
+@using MedSyncApp.Core.Application.Enums;
+@model List<AppointmentViewModel>;
+
+@{
+    ViewData["Title"] = "Citas";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a asp-controller="Appointment" asp-action="Create" class="btn btn-success bg-gradient float-end">Crea una nueva Cita</a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <h1 class="custom-dark-color display-4 fw-bold">Citas</h1>
+    </div>
+    <div class="row mb-3 custom-primary-color bg-gradient rounded p-4">
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2 class="text-light">No hay citas registradas.</h2>
+        }
+        else
+        {
+            @foreach (AppointmentViewModel appointment in Model)
+            {
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                    <div class="custom-card custom-dark-color bg-gradient box-shadow flex-fill border-5 border-top-0 border-end-0 border-bottom-0 @(appointment.Status == AppointmentStatus.PendingConsulting ? "border-info" : appointment.Status == AppointmentStatus.PendingResult ? "border-warning" : "border-white")">
+                        <div class="card-body d-flex flex-column">
+                            @if (appointment.Status == AppointmentStatus.PendingConsulting)
+                            {
+                                <h4 class="custom-light-color mb-4 display-6">Pendiente de Consulta</h4>
+                            }
+                            else if (appointment.Status == AppointmentStatus.PendingResult)
+                            {
+                                <h4 class="custom-light-color mb-4 display-6">Pendiente de Resultado</h4>
+                            }
+                            else if (appointment.Status == AppointmentStatus.Completed)
+                            {
+                                <h4 class="custom-light-color mb-4 display-6">Completada</h4>
+                            }
+                            <p class="custom-light-color-field"><strong class="custom-darker-color">Paciente:</strong> @appointment.PatientName</p>
+                            <p class="custom-light-color-field"><strong class="custom-darker-color">Doctor:</strong> @appointment.DoctorName</p>
+                            <p class="custom-light-color-field"><strong class="custom-darker-color">Cita:</strong> @appointment.Date.ToShortDateString() | @appointment.Hour.Hours.ToString("00"):@appointment.Hour.Minutes.ToString("00")</p>
+                            <p class="custom-light-color-field"><strong class="custom-darker-color">Causa:</strong> @appointment.Cause</p>
+                            <div class="d-flex justify-content-end">
+                                <a asp-controller="Appointment" asp-action="Delete" asp-route-id="@appointment.Id" class="btn btn-sm btn-danger m-2">Eliminar</a>
+                                @if(appointment.Status == AppointmentStatus.PendingConsulting){
+                                    <a asp-controller="Appointment" asp-action="Consult" asp-route-id="@appointment.Id" class="btn btn-sm btn-success m-2">Consultar</a>
+                                }
+                                else if(appointment.Status == AppointmentStatus.PendingResult)
+                                {
+                                    <a asp-controller="Appointment" asp-action="ConsultLabResult" asp-route-id="@appointment.Id" class="btn btn-sm btn-success m-2">Consultar Resultados</a>
+                                }
+                                else if(appointment.Status == AppointmentStatus.Completed)
+                                {
+                                    <a asp-controller="Appointment" asp-action="ShowCompletedLabResults" asp-route-id="@appointment.Id" class="btn btn-sm btn-success m-2">Ver Resultados</a>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+                                

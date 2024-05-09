@@ -1,0 +1,41 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.LabTest;
+@model List<LabTestViewModel>;
+@{
+    ViewData["Title"] = "Pruebas de Laboratorio";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a asp-controller="LabTest" asp-action="Create" class="btn btn-success bg-gradient float-end">Crear nueva Prueba de Laboratorio</a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <h1 class="custom-dark-color display-4 fw-bold">Pruebas de Laboratorio</h1>
+    </div>
+    <div class="row mb-3">
+        <table class="table text-success table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">PRUEBA DE LABORATORIO</th>
+                    <th scope="col">EDITAR</th>
+                    <th scope="col">ELIMINAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (LabTestViewModel labTest in Model)
+                {
+                    <tr class="custom-darker-color">
+                        <td scope="row">@labTest.Name</td>
+                        <td>
+                            <a asp-controller="LabTest" asp-action="Edit" asp-route-id="@labTest.Id" class="btn btn-sm btn-success">Editar</a>
+                        </td>
+                        <td>
+                            <a asp-controller="LabTest" asp-action="Delete" asp-route-id="@labTest.Id" class="btn btn-sm btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

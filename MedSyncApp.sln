@@ -1,0 +1,63 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedSyncApp", "MedSyncApp\MedSyncApp.csproj", "{B20D4EEE-6419-465E-9B4E-F6AAA4ADCB9C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{0097D648-B3BD-41C7-A4B9-47C27785A427}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3D797C73-CA31-40BC-A6B5-0ECE9AD9B545}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{EAFC6661-7F45-44CB-BEC0-9C831E380880}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{9A5183E8-C3A1-4FFA-9440-C9B33E2AD06F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{7DA13F21-D32A-4810-9B17-F0C8CBD0729E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedSyncApp.Core.Domain", "MedSyncApp.Core.Domain\MedSyncApp.Core.Domain.csproj", "{2F06DE1E-D614-4BB1-99BE-F5A76EEECEE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedSyncApp.Core.Application", "MedSyncApp.Core.Application\MedSyncApp.Core.Application.csproj", "{38D4508C-C296-4A25-B842-A36741890108}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedSyncApp.Infrastructure.Persistence", "MedSyncApp.Infrastructure.Persistence\MedSyncApp.Infrastructure.Persistence.csproj", "{448401BA-5AAB-4B94-8A0F-778FAD1BB03C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B20D4EEE-6419-465E-9B4E-F6AAA4ADCB9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B20D4EEE-6419-465E-9B4E-F6AAA4ADCB9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B20D4EEE-6419-465E-9B4E-F6AAA4ADCB9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B20D4EEE-6419-465E-9B4E-F6AAA4ADCB9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F06DE1E-D614-4BB1-99BE-F5A76EEECEE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F06DE1E-D614-4BB1-99BE-F5A76EEECEE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F06DE1E-D614-4BB1-99BE-F5A76EEECEE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F06DE1E-D614-4BB1-99BE-F5A76EEECEE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38D4508C-C296-4A25-B842-A36741890108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38D4508C-C296-4A25-B842-A36741890108}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38D4508C-C296-4A25-B842-A36741890108}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38D4508C-C296-4A25-B842-A36741890108}.Release|Any CPU.Build.0 = Release|Any CPU
+		{448401BA-5AAB-4B94-8A0F-778FAD1BB03C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{448401BA-5AAB-4B94-8A0F-778FAD1BB03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{448401BA-5AAB-4B94-8A0F-778FAD1BB03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{448401BA-5AAB-4B94-8A0F-778FAD1BB03C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B20D4EEE-6419-465E-9B4E-F6AAA4ADCB9C} = {7DA13F21-D32A-4810-9B17-F0C8CBD0729E}
+		{3D797C73-CA31-40BC-A6B5-0ECE9AD9B545} = {0097D648-B3BD-41C7-A4B9-47C27785A427}
+		{EAFC6661-7F45-44CB-BEC0-9C831E380880} = {0097D648-B3BD-41C7-A4B9-47C27785A427}
+		{9A5183E8-C3A1-4FFA-9440-C9B33E2AD06F} = {0097D648-B3BD-41C7-A4B9-47C27785A427}
+		{7DA13F21-D32A-4810-9B17-F0C8CBD0729E} = {9A5183E8-C3A1-4FFA-9440-C9B33E2AD06F}
+		{2F06DE1E-D614-4BB1-99BE-F5A76EEECEE7} = {3D797C73-CA31-40BC-A6B5-0ECE9AD9B545}
+		{38D4508C-C296-4A25-B842-A36741890108} = {3D797C73-CA31-40BC-A6B5-0ECE9AD9B545}
+		{448401BA-5AAB-4B94-8A0F-778FAD1BB03C} = {EAFC6661-7F45-44CB-BEC0-9C831E380880}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79101505-23E3-41F9-8B88-9F0D8844E2C5}
+	EndGlobalSection
+EndGlobal

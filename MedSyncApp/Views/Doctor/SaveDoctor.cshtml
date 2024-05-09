@@ -1,0 +1,80 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.Doctor;
+@model SaveDoctorViewModel;
+@{
+    bool editMode = Model.Id != 0 ? true : false;
+
+    if (editMode)
+    {
+        ViewData["Title"] = "Editar Doctor";
+    }
+    else
+    {
+        ViewData["Title"] = "Registrar Doctor";
+    }
+
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card bg-left bg-gradient border-0 rounded-3">
+                <div class="card-header bg-success bg-gradient text-light p-2">
+                    <h4 class="m-2 display-6">@(editMode ? $"Edita el doctor {Model.Firstname} {Model.Lastname}" : "Registra un nuevo doctor")</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-controller="Doctor" asp-action="@(editMode ? "Edit" : "Create")" enctype="multipart/form-data">
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+                            }
+                        
+                            <div class="mb-3">
+                            <label asp-for="Firstname" class="form-label custom-dark-color fw-bold">Nombre</label>
+                            <input asp-for="Firstname" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            </div>
+
+                            <div class="mb-3">
+                            <label asp-for="Lastname" class="form-label custom-dark-color fw-bold">Apellido</label>
+                            <input asp-for="Lastname" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            </div>
+
+                            <div class="mb-3">
+                            <label asp-for="IdentificationCard" class="form-label custom-dark-color fw-bold">Cédula</label>
+                            <input asp-for="IdentificationCard" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            </div>
+
+                            <div class="mb-3">
+                            <label asp-for="Email" class="form-label custom-dark-color fw-bold">Email</label>
+                            <input asp-for="Email" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            </div>
+
+                            <div class="mb-3">
+                            <label asp-for="Phone" class="form-label custom-dark-color fw-bold">Teléfono</label>
+                            <input asp-for="Phone" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="File" class="form-label">Seleccione una imagen:</label>
+                                @if (editMode)
+                                {
+                                    <input asp-for="File" class="form-control" />
+                                }
+                                else
+                                {
+                                    <input required asp-for="File" class="form-control" />
+                                }
+
+                                <span asp-validation-for="File" class="text-danger"></span>
+                            </div>
+
+                            <input type="hidden" asp-for="Id" />
+                            <div class="d-flex justify-content-end">
+                                <a asp-controller="Doctor" asp-action="Index" class="btn btn-outline-success m-2">Volver atrás</a>
+                                <button type="submit" class="btn btn-success m-2">Guardar</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,118 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.custom-image {
+    height: 100%;
+    object-fit: cover;
+}
+
+.bg-customized {
+    background-color: rgb(232, 255, 238);
+}
+
+.bg-left {
+    background-color: rgb(207, 252, 219);
+}
+
+.bg-right {
+    background-color: rgb(32, 150, 95);
+}
+
+.custom-height {
+    height: 70vh;
+}
+
+.custom-dark-color {
+    color: rgb(22, 86, 56)
+}
+
+.custom-darker-color {
+    color: rgb(16, 60, 39)
+}
+
+.custom-light-color {
+    color: rgb(179, 255, 199)
+}
+
+.custom-light-color-field {
+    color: rgb(16, 47, 24)
+}
+
+.custom-field-doc-pat {
+    color: rgb(22, 86, 56)
+}
+
+.custom-primary-color {
+    background-color: rgb(22, 86, 56);
+}
+
+.custom-card-color {
+    background-color: rgb(32, 150, 95);
+}
+
+.custom-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #21965f;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    color: #fff;
+}
+
+.custom-delete-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: transparent;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    color: #fff;
+}
+
+.custom-card-body {
+    background-color: #a9ffd7;
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
+
+.custom-card-header {
+    padding: 0.5rem 1rem;
+    margin-bottom: 0;
+    background-color: #198754;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.custom-table-success {
+    --bs-table-bg: rgb(32, 150, 95);
+    --bs-table-striped-bg: rgb(207, 252, 219);
+    --bs-table-striped-color: rgb(6, 51, 30);
+    color: #cdffe8;
+    border-color: rgb(22, 86, 56);
+}

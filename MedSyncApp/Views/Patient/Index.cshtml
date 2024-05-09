@@ -1,0 +1,55 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.Patient;
+@model List<PatientViewModel>;
+
+@{
+    ViewData["Title"] = "Pacientes";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a asp-controller="Patient" asp-action="Create" class="btn btn-success bg-gradient float-end">Registra un nuevo Paciente</a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <h1 class="custom-dark-color display-4 fw-bold">Pacientes</h1>
+    </div>
+    <div class="row mb-3 custom-primary-color bg-gradient rounded p-4">
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2 class="text-light">No hay pacientes registrados.</h2>
+        }
+        else
+        {
+            @foreach (PatientViewModel patient in Model)
+            {
+                <div class="col-md-6 mb-4 d-flex align-items-stretch">
+                    <div class="custom-card custom-dark-color bg-gradient opacity-10 box-shadow flex-fill">
+                        <div class="d-flex flex-row flex-fill box-shadow">
+                            <div class="col-md-6 d-flex flex-column box-shadow rounded">
+                                <img class="custom-image bd-placeholder-img card-img-top img-product-size w-100 h-100 rounded" src="@patient.ImageURL" />
+                            </div>
+                            <div class="col-md-6 d-flex flex-column p-4 justify-content-between box-shadow">
+                                <div>
+                                    <h6 class="custom-light-color mb-4 display-6">@patient.Firstname @patient.Lastname</h6>
+                                    <p class="custom-field-doc-pat"><strong class="custom-darker-color">Cédula:</strong> @patient.IdentificationCard</p>
+                                    <p class="custom-field-doc-pat"><strong class="custom-darker-color">Fecha de nacimiento:</strong> @patient.Birthdate.ToShortDateString()</p>
+                                    <p class="custom-field-doc-pat"><strong class="custom-darker-color">Dirección:</strong> @patient.Address</p>
+                                    <p class="custom-field-doc-pat"><strong class="custom-darker-color">Teléfono:</strong> @patient.Phone</p>
+                                    <p class="custom-field-doc-pat"><strong class="custom-darker-color">Es fumador:</strong> @(patient.IsSmoker ? "Sí" : "No")</p>
+                                    <p class="custom-field-doc-pat"><strong class="custom-darker-color">Tiene alergias:</strong> @(patient.HasAllergy ? "Sí" : "No")</p>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <a asp-controller="Patient" asp-action="Delete" asp-route-id="@patient.Id" class="btn btn-sm btn-danger m-2">Eliminar</a>
+                                    <a asp-controller="Patient" asp-action="Edit" asp-route-id="@patient.Id" class="btn btn-sm btn-success m-2">Editar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+

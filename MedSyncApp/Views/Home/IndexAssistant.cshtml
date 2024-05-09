@@ -1,0 +1,46 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.User;
+@model UserViewModel;
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="container-fluid">
+    <div class="row m-5 rounded">
+        <h1 class="display-1 fw-bold fst-italic text-center custom-dark-color">MedSync Asistencia</h1>
+    </div>
+    <div class="row mb-3 rounded">
+        <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card mb-4 bg-left border-success custom-dark-color bg-opacity-10 box-shadow flex-fill">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h4>Pacientes</h4>
+                        <p>Registra y gestiona la información personal de los pacientes para agendar  sus citas y pruebas de laboratorio de manera eficiente.</p>
+                    </div>
+                    <a asp-controller="Patient" asp-action="Index" class="btn btn-sm btn-success m-2">Ir a Pacientes</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card custom-dark-color mb-4 bg-left border-success bg-opacity-10 box-shadow flex-fill">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h4>Citas</h4>
+                        <p>Administra citas médicas: Programa, selecciona pruebas y observa resultados para una atención óptima.</p>
+                    </div>
+                    <a asp-controller="Appointment" asp-action="Index" class="btn btn-sm btn-success m-2">Ir a Citas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-stretch">
+            <div class="card custom-dark-color mb-4 bg-left border-success bg-opacity-10 box-shadow flex-fill">
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <div>
+                        <h4>Resultados de Pruebas de Laboratorio</h4>
+                        <p>Gestiona la administración de las pruebas de laboratorio de cada paciente.</p>
+                    </div>
+                    <a asp-controller="LabResult" asp-action="Index" class="btn btn-sm btn-success m-2">Ir a Resultados de Pruebas de Laboratorio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

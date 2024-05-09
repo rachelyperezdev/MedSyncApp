@@ -1,0 +1,48 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.User;
+@using MedSyncApp.Core.Application.Enums;
+@model List<UserViewModel>;
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a asp-controller="User" asp-action="Create" class="btn btn-success bg-gradient float-end">Crea un nuevo Usuario</a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <h1 class="custom-dark-color display-4 fw-bold">Usuarios</h1>
+    </div>
+    <div class="row mb-3 custom-primary-color bg-gradient rounded p-4">
+            @foreach (UserViewModel user in Model)
+            {
+                <div class="col-md-4 mb-4 d-flex align-items-stretch">
+                <div class="custom-card custom-dark-color bg-gradient box-shadow flex-fill border-5 border-top-0 border-end-0 border-bottom-0 @(user.Role == Role.Administrator ? "border-white" : "border-dark")">
+                    <div class="d-flex flex-column m-4 flex-fill box-shadow">
+                        <h6 class="custom-light-color display-6 mb-4 fw-bold">@user.Firstname @user.Lastname</h6>
+                        <span class="custom-light-color-field mb-2 lead fw-bold">
+                                @if (user.Role == Role.Administrator)
+                                {
+                                    <text>Administrador</text>
+                                }
+                                else if (user.Role == Role.Assistant)
+                                {
+                                    <text>Asistente</text>
+                                }
+                            | @user.Username
+                        </span>
+                        <p class="custom-light-color-field lead fw-bold">@user.Email</p>
+                        <div class="d-flex justify-content-end">
+                            <a asp-controller="User" asp-action="Delete" asp-route-id="@user.Id" class="btn btn-sm btn-danger m-2">Eliminar</a>
+                            <a asp-controller="User" asp-action="Edit" asp-route-id="@user.Id" class="btn btn-sm btn-success m-2">Editar</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            }
+    </div>
+</div>
+
+

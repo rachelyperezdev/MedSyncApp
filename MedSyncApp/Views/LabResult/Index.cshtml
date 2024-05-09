@@ -1,0 +1,43 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.LabResult;
+@model List<LabResultViewModel>;
+@{
+    ViewData["Title"] = "Resultados de Pruebas de Laboratorio";
+    string searchedPatientIdentificationCard = ViewBag.PatientIdentificationCard;
+}
+
+<div class="container-fluid">
+    <div class="row mb-4 mt-4">
+        <h1 class="custom-dark-color display-4 fw-bold">Resultados Pendientes</h1>
+    </div>
+    <div class="row mb-4">
+        <form method="post" asp-controller="LabResult" asp-action="Index" class="d-flex justify-content-center">
+            <input class="form-control mr-2 text-black border-0 rounded-0 shadow" type="text" name="PatientIdentificationCard" placeholder="Buscar resultado por cédula del paciente" />
+            <button class="btn btn-success rounded-0 shadow" type="submit">@(searchedPatientIdentificationCard == null? "Buscar" : "Restablecer lista de resultados")</button>
+        </form>
+    </div>
+    <div class="row mb-3">
+        <table class="table table-striped text-success table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">PACIENTE</th>
+                    <th scope="col">CÉDULA</th>
+                    <th scope="col">PRUEBA DE LABORATORIO</th>
+                    <th scope="col">REPORTAR RESULTADO</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (LabResultViewModel labResult in Model)
+                {
+                    <tr class="custom-darker-color">
+                        <td scope="row">@labResult.PatientFullname</td>
+                        <td scope="row">@labResult.PatientIdentificationCard</td>
+                        <td scope="row">@labResult.LabTestName</td>
+                        <td>
+                            <a asp-controller="LabResult" asp-action="ReportLabResult" asp-route-id="@labResult.Id" class="btn btn-sm btn-outline-success">Reportar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

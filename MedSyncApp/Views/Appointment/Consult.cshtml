@@ -1,0 +1,53 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.Appointment;
+@model SaveAppointmentViewModel;
+@{
+    ViewData["Title"] = "Consulta";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card bg-left bg-gradient border-0 rounded-3">
+                <div class="card-header bg-success bg-gradient text-light p-2">
+                    <h4 class="m-2 display-6">Consulta</h4>
+                </div>
+                <div class="card-body">
+                    @if (Model.LabTests == null || Model.LabTests.Count == 0)
+                    {
+                        <p class="text-dark">No hay pruebas de laboratorio registradas.</p>
+                        <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-primary float-end m-2">Volver atrás</a>
+                    }
+                    else
+                    {
+                        <form method="post" asp-controller="Appointment" asp-action="Consult">
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+                            }
+                            <div class="mb-3">
+                                <label class="form-label custom-dark-color fw-bold">Pruebas de Laboratorio</label><br />
+                                @foreach (var labTest in Model.LabTests)
+                                {
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="labTest_@(labTest.Id)" name="LabTestIds[]" value="@labTest.Id">
+                                        <label class="form-check-label" for="labTest_@(labTest.Id)">
+                                            @labTest.Name
+                                        </label>
+                                    </div>
+                                }
+                            </div>
+
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="Cause" />
+
+                            <div class="d-flex justify-content-end">
+                                <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-success m-2">Volver atrás</a>
+                                <button type="submit" class="btn btn-success m-2">Realizar Prueba</button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

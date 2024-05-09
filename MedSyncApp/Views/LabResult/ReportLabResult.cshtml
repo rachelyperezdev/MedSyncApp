@@ -1,0 +1,33 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.LabResult;
+@model SaveLabResultViewModel;
+@{
+    ViewData["Title"] = "Reportar Resultado";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card bg-left bg-gradient border-0 rounded-3">
+                <div class="card-header bg-success bg-gradient text-light p-2">
+                    <h4 class="m-2">Reportar Resultado</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-controller="LabResult" asp-action="ReportLabResult">
+                        <div class="mb-3">
+                            <label asp-for="Result" class="form-label custom-dark-color fw-bold">Resultado</label>
+                            <input asp-for="Result" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            <span asp-validation-for="Result" class="text-danger"></span>
+                        </div>
+
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="d-flex justify-content-end">
+                            <a asp-controller="LabResult" asp-action="Index" class="btn btn-outline-success m-2">Volver atrás</a>
+                            <button type="submit" class="btn btn-success m-2">Finalizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

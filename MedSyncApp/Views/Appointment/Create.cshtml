@@ -1,0 +1,81 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.Appointment;
+@model SaveAppointmentViewModel;
+@{
+    ViewData["Title"] = "Crear Cita";
+ }
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card bg-left bg-gradient border-0 rounded-3">
+                <div class="card-header bg-success bg-gradient text-light p-2">
+                    <h4 class="m-2 display-6">Crear Cita</h4>
+                </div>
+                <div class="card-body">
+                    @if (Model.Patients == null || Model.Patients.Count == 0)
+                    {
+                        if (Model.Doctors == null || Model.Doctors.Count == 0)
+                        {
+                            <p class="text-dark">No hay pacientes ni doctores registrados.</p>
+                            <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-success float-end m-2">Volver atrás</a>
+                        }
+                        else
+                        {
+                            <p class="text-dark">No hay pacientes registrados.</p>
+                            <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-success float-end m-2">Volver atrás</a>
+                        }
+                    }
+                    else if (Model.Doctors == null || Model.Doctors.Count == 0)
+                    {
+                        <p class="text-dark">No hay doctores registrados.</p>
+                        <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-success float-end m-2">Volver atrás</a>
+                    }
+                    else
+                    {
+                        <form method="post" asp-controller="Appointment" asp-action="Create">
+                            @if (!ViewData.ModelState.IsValid)
+                            {
+                                @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
+                            }
+                            <div class="mb-3">
+                                <label asp-for="PatientId" class="form-label custom-dark-color fw-bold">Paciente</label>
+                                <select asp-for="PatientId" asp-items="@(new SelectList(Model.Patients.Select(p => new { p.Id, Fullname = $"{p.Firstname} {p.Lastname}" }), "Id", "Fullname"))" class="form-select text-dark">
+                                    <option value="0">Seleccione un Paciente</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="DoctorId" class="form-label custom-dark-color fw-bold">Doctor</label>
+                                <select asp-for="DoctorId" asp-items="@(new SelectList(Model.Doctors.Select(d => new { d.Id, Fullname = $"{d.Firstname} {d.Lastname}"}), "Id", "Fullname"))" class="form-select text-dark">
+                                    <option value="0">Seleccione un Doctor</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Date" class="form-label custom-dark-color fw-bold">Fecha de la cita</label>
+                                <input asp-for="Date" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Hour" class="form-label custom-dark-color fw-bold">Hora</label>
+                                <input asp-for="Hour" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Cause" class="form-label custom-dark-color fw-bold">Causa</label>
+                                <input asp-for="Cause" class="form-control custom-input bg-success bg-opacity-10 custom-dark-color" />
+                            </div>
+
+                            <input type="hidden" asp-for="Id" />
+
+                            <div class="d-flex justify-content-end">
+                                <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-success m-2">Volver atrás</a>
+                                <button type="submit" class="btn btn-success m-2">Guardar</button>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

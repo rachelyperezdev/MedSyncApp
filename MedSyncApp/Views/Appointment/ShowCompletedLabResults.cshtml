@@ -1,0 +1,35 @@
+﻿@using MedSyncApp.Core.Application.ViewModels.LabResult;
+@model List<LabResultViewModel>;
+@{
+    ViewData["Title"] = "Resultados Completados";
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col-3 offset-9">
+            <a asp-controller="Appointment" asp-action="Index" class="btn btn-outline-success bg-gradient float-end">Volver atrás</a>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <h1 class="text-dark display-4 fw-bold mb-2">Resultados Completados</h1>
+    </div>
+    <div class="row mb-3">
+        <table class="table table-striped text-dark">
+            <thead>
+                <tr>
+                    <th scope="col">PRUEBA DE LABORATORIO</th>
+                    <th scope="col">RESULTADO</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (LabResultViewModel labResult in Model)
+                {
+                    <tr class="text-dark">
+                        <td scope="row">@labResult.LabTestName</td>
+                        <td scope="row">@labResult.ResultText</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
